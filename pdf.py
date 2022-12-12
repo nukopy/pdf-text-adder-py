@@ -10,14 +10,17 @@ from reportlab.pdfgen import canvas
 
 
 # constants
-# font
-FONT_SIZE = 13  # フォントサイズ
+FONT_SIZE = 13
 
 # A4 = (210*mm, 297*mm)
 TOP = 280 * mm
 BOTTOM = 10 * mm
 LEFT = 10 * mm
 RIGHT = 150 * mm
+
+# for Amazon 領収書
+AMAZON_X = 150 * mm
+AMAZON_Y = 243 * mm
 
 # フォントの登録
 pdfmetrics.registerFont(TTFont("ipaexg", "./assets/fonts/ipaexg/ipaexg.ttf"))
@@ -35,7 +38,7 @@ def get_position_preset(position_preset: str) -> tuple[float, float]:
         return RIGHT, BOTTOM
     elif position_preset == "amazon-receipt":
         # Amazon の領収書の右上の宛名記入欄
-        return RIGHT, TOP
+        return AMAZON_X, AMAZON_Y
     else:
         raise ValueError("Invalid position preset")
 

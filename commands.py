@@ -1,5 +1,6 @@
 from pathlib import Path
 import glob
+import os
 
 import click
 
@@ -142,13 +143,17 @@ def add_text_to_pdf_files(
 
     # add text to pdf files
     for input_fname in pdf_filenames:
-        output_fname = input_fname.replace(".pdf", "-edited.pdf")
+        output_fname = ""
         if output_dir != "":
             # create output_dir if not exists
-            Path(output_dir).mkdir(parents=True, exist_ok=True)
+            output_path = Path(output_dir)
+            output_path.mkdir(parents=True, exist_ok=True)
 
             # create output filename
-            output_fname = output_fname.replace(input_dir, output_dir)
+            output_fname = os.path.join(
+                output_dir,
+                os.path.basename(input_fname),
+            )
 
         pdf.add_text_to_pdf(
             input_fname,

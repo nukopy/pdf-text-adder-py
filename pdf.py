@@ -82,7 +82,6 @@ def add_text_to_pdf(
     cv.showPage()
     cv.save()
 
-    # バッファのリセット：move to the beginning of the StringIO buffer
     buffer.seek(0)
     pdf_for_addition_text = PdfFileReader(buffer)
 

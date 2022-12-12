@@ -61,7 +61,7 @@ python cli.py add-text-to-pdf-files \
 python cli.py add-text-to-pdf-files \
   --input-dir ./sample \
   --output-dir ./sample/output \
-  --text-position-x  \
+  --text-position-x 100 \
   --text-position-y 100 \
   --text "Hello World Co., Ltd." \
   --font-size 13

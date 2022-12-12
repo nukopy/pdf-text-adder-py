@@ -73,7 +73,7 @@ python cli.py add-text-to-pdf-files \
 
 ```sh
 python cli.py add-text-to-pdf-files \
-  --input-dir path/to/receipts/ \
+  --input-dir path/to/receipts \
   --output-dir path/to/receipts/output \
   --text-position-preset amazon-receipt \
   --text "株式会社ハローワールド" \

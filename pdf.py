@@ -13,14 +13,21 @@ from reportlab.pdfgen import canvas
 FONT_SIZE = 13
 
 # A4 = (210*mm, 297*mm)
-TOP = 280 * mm
-BOTTOM = 10 * mm
-LEFT = 10 * mm
-RIGHT = 150 * mm
+TOP = 280  # y
+BOTTOM = 10  # y
+LEFT = 10  # x
+RIGHT = 150  # x
+AMAZON_X = 150
+AMAZON_Y = 243
 
-# for Amazon 領収書
-AMAZON_X = 150 * mm
-AMAZON_Y = 243 * mm
+TEXT_POSITION_PRESETS = [
+    "top-left",
+    "top-right",
+    "bottom-left",
+    "bottom-right",
+    "amazon-receipt",
+    "",  # 空文字列の場合、x, y で指定した位置に挿入
+]
 
 # フォントの登録
 pdfmetrics.registerFont(TTFont("ipaexg", "./assets/fonts/ipaexg/ipaexg.ttf"))
@@ -29,16 +36,16 @@ pdfmetrics.registerFont(TTFont("ipaexg", "./assets/fonts/ipaexg/ipaexg.ttf"))
 def get_position_preset(position_preset: str) -> tuple[float, float]:
     if position_preset == "top-left":
         # 呼び名は y-x、位置は x, y
-        return LEFT, TOP
+        return LEFT * mm, TOP * mm
     elif position_preset == "top-right":
-        return RIGHT, TOP
+        return RIGHT * mm, TOP * mm
     elif position_preset == "bottom-left":
-        return LEFT, BOTTOM
+        return LEFT * mm, BOTTOM * mm
     elif position_preset == "bottom-right":
-        return RIGHT, BOTTOM
+        return RIGHT * mm, BOTTOM * mm
     elif position_preset == "amazon-receipt":
         # Amazon の領収書の右上の宛名記入欄
-        return AMAZON_X, AMAZON_Y
+        return AMAZON_X * mm, AMAZON_Y * mm
     else:
         raise ValueError("Invalid position preset")
 

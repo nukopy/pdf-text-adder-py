@@ -11,12 +11,12 @@ import pdf
 @click.option(
     "--input-filename",
     default="./dummy.pdf",
-    help="Input of PDF file path",
+    help="PDF file path of input",
 )
 @click.option(
     "--output-filename",
     default="",
-    help='Input of PDF file path. If not specified, the file name will be "{input file name}-edited.pdf"',
+    help='PDF file path of output. If not specified, the file name will be "{input file name}-edited.pdf"',
 )
 @click.option(
     "--text",
@@ -27,26 +27,17 @@ import pdf
     "--text-position-x",
     default=pdf.LEFT,
     type=float,
-    help=f"Insert text position x (mm). Default is {pdf.LEFT} mm.",
+    help=f"Position x (mm) of insert text. Default is {pdf.LEFT} (mm).",
 )
 @click.option(
     "--text-position-y",
     default=pdf.TOP,
     type=float,
-    help=f"Insert text position y (mm). Default is {pdf.TOP} mm.",
+    help=f"Position y (mm) of insert text. Default is {pdf.TOP} (mm).",
 )
 @click.option(
     "--text-position-preset",
-    type=click.Choice(
-        [
-            "top-left",
-            "top-right",
-            "bottom-left",
-            "bottom-right",
-            "amazon-receipt",
-            "",
-        ]
-    ),
+    type=click.Choice(pdf.TEXT_POSITION_PRESETS),
     default="",
     help="Presets of insert text position. If empty, use --text-position-x and --text-position-y",
 )
@@ -98,26 +89,17 @@ def add_text_to_pdf(
     "--text-position-x",
     default=pdf.LEFT,
     type=float,
-    help=f"Insert text position x (mm). Default is {pdf.LEFT} mm.",
+    help=f"Position x (mm) of insert text. Default is {pdf.LEFT} (mm).",
 )
 @click.option(
     "--text-position-y",
     default=pdf.TOP,
     type=float,
-    help=f"Insert text position y (mm). Default is {pdf.TOP} mm.",
+    help=f"Position y (mm) of insert text. Default is {pdf.TOP} (mm).",
 )
 @click.option(
     "--text-position-preset",
-    type=click.Choice(
-        [
-            "top-left",
-            "top-right",
-            "bottom-left",
-            "bottom-right",
-            "amazon-receipt",
-            "",
-        ]
-    ),
+    type=click.Choice(pdf.TEXT_POSITION_PRESETS),
     default="",
     help="Presets of insert text position. If empty, use --text-position-x and --text-position-y",
 )

@@ -67,14 +67,14 @@ python cli.py add-text-to-pdf-files \
   --font-size 13
 ```
 
-- Amazon の領収書の右上の宛名欄に会社名を挿入する
+- 複数の Amazon の領収書 PDF の右上の宛名欄に会社名を挿入する
 
 そもそもこれやるために作った。
 
 ```sh
 python cli.py add-text-to-pdf-files \
-  --input-dir ./sample \
-  --output-dir ./sample/output \
+  --input-dir path/to/receipts/ \
+  --output-dir path/to/receipts/output \
   --text-position-preset amazon-receipt \
   --text "株式会社ハローワールド" \
   --font-size 13

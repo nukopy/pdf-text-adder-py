@@ -1,11 +1,10 @@
 [tool.poetry]
-name = "pdf-amazon-receipt"
+name = "pdf-text-adder-py"
 version = "0.1.0"
 description = ""
 authors = ["nukopy <nukopy@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "pdf_amazon_receipt"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

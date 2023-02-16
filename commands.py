@@ -78,7 +78,7 @@ def add_text_to_pdf(
 @click.option(
     "--output-dir",
     default="",
-    help="PDF files directory for output. If not specified, the directory will be {input dir}.",
+    help="PDF files directory for output. If not specified, the directory will be \"{input dir}/output\".",
 )
 @click.option(
     "--text",
@@ -125,8 +125,16 @@ def add_text_to_pdf_files(
 
     # add text to pdf files
     for input_fname in pdf_filenames:
-        output_fname = ""
-        if output_dir != "":
+        if output_dir == "":
+            # デフォルト
+            output_path = Path(input_dir, "output")
+            output_path.mkdir(parents=True, exist_ok=True)
+
+            output_fname = os.path.join(
+                output_path,
+                os.path.basename(input_fname),
+            )
+        else:
             # create output_dir if not exists
             output_path = Path(output_dir)
             output_path.mkdir(parents=True, exist_ok=True)

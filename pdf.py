@@ -10,15 +10,16 @@ from reportlab.pdfgen import canvas
 
 
 # constants
-FONT_SIZE = 13
+FONT_SIZE = 9
 
 # A4 = (210*mm, 297*mm)
+# page 左下が基準座標 (0, 0)
 TOP = 280  # y
 BOTTOM = 10  # y
 LEFT = 10  # x
 RIGHT = 150  # x
-AMAZON_X = 150
-AMAZON_Y = 243
+AMAZON_X = 145
+AMAZON_Y = 261
 
 TEXT_POSITION_PRESETS = [
     "top-left",

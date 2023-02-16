@@ -94,13 +94,19 @@ def add_text_to_pdf(
     pdf_for_addition_text = PdfFileReader(buffer)
 
     # 編集対象の PDF の 1 ページ目を読み取り、テキスト挿入用の PDF の 1 ページ目をマージ
-    page_input = existing_pdf.getPage(0)
+    page_input = existing_pdf.getPage(0)  # PdfFileReader のページは 0-origin
     page_text = pdf_for_addition_text.getPage(0)
     page_input.mergePage(page_text)
 
     # 出力
     output = PdfFileWriter()
     output.addPage(page_input)
+
+    # 2 ページ目以降ページの追加
+    for i in range(1, existing_pdf.getNumPages()):
+        page = existing_pdf.getPage(i)
+        output.addPage(page)
+
     if output_filename == "":
         # input ファイルと同じディレクトリに出力
         output_dir = os.path.dirname(input_filename)

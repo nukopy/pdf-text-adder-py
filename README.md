@@ -46,7 +46,7 @@ python cli.py add-text-to-pdf \
 - テキスト挿入位置をプリセットで指定する
 
 ```sh
-python cli.py add-text-to-pdf-files \
+python cli.py add-text-to-pdfs \
   --input-dir ./sample \
   --text-position-preset top-left \
   --text "株式会社ハローワールド"
@@ -55,11 +55,11 @@ python cli.py add-text-to-pdf-files \
 - テキスト挿入位置を座標で指定する
 
 ```sh
-python cli.py add-text-to-pdf-files \
+python cli.py add-text-to-pdfs \
   --input-dir ./sample \
   --text-position-x 100 \
   --text-position-y 100 \
-  --text "Hello World Co., Ltd." \
+  --text "Hello World Co., Ltd."
 ```
 
 - 複数の Amazon の領収書 PDF の右上の宛名欄に宛名を挿入する
@@ -67,8 +67,8 @@ python cli.py add-text-to-pdf-files \
 そもそもこれやるために作った。
 
 ```sh
-python cli.py add-text-to-pdf-files \
+python cli.py add-text-to-pdfs \
   --input-dir path/to/receipts \
   --text-position-preset amazon-receipt \
-  --text "株式会社ハローワールド 三愛太郎" \
+  --text "株式会社ハローワールド 三愛太郎"
 ```

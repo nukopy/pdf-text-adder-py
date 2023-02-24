@@ -4,7 +4,10 @@ import os
 
 import click
 
+from logger import create_logger
 import pdf
+
+logger = create_logger(__name__)
 
 
 @click.command()
@@ -58,6 +61,8 @@ def add_text_to_pdf(
 ) -> None:
     """単一の PDF ファイルにテキストを挿入する"""
 
+    logger.info("Start processing...")
+
     pdf.add_text_to_pdf(
         input_filename,
         output_filename,
@@ -78,7 +83,7 @@ def add_text_to_pdf(
 @click.option(
     "--output-dir",
     default="",
-    help="PDF files directory for output. If not specified, the directory will be \"{input dir}/output\".",
+    help='PDF files directory for output. If not specified, the directory will be "{input dir}/output".',
 )
 @click.option(
     "--text",
@@ -109,7 +114,7 @@ def add_text_to_pdf(
     default=pdf.FONT_SIZE,
     help=f"Font size. Default is {pdf.FONT_SIZE}.",
 )
-def add_text_to_pdf_files(
+def add_text_to_pdfs(
     input_dir: str,
     output_dir: str,
     text: str,
@@ -120,8 +125,12 @@ def add_text_to_pdf_files(
 ) -> None:
     """複数の PDF ファイルにテキストを挿入する"""
 
+    logger.info("Start processing...")
+
     # get pdf files path from input dir
     pdf_filenames = glob.glob(f"{input_dir}/*.pdf")
+    if len(pdf_filenames) == 0:
+        logger.error(f'No PDF files were found in "{input_dir}".')
 
     # add text to pdf files
     for input_fname in pdf_filenames:

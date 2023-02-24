@@ -8,6 +8,9 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
+from logger import create_logger
+
+logger = create_logger(__name__)
 
 # constants
 FONT_SIZE = 9
@@ -69,7 +72,7 @@ def add_text_to_pdf(
         input_stream = open(input_filename, "rb")
         existing_pdf = PdfFileReader(input_stream, strict=False)
     except Exception:
-        print(f"Input file is not found: {input_filename}")
+        logger.error(f"Input file is not found: {input_filename}")
         return
 
     input_stream = open(input_filename, "rb")
@@ -116,8 +119,8 @@ def add_text_to_pdf(
     with open(output_filename, "wb") as output_stream:
         output.write(output_stream)
 
-    print(f"input: {input_filename}")
-    print(f"output: {output_filename}")
+    logger.info(f"input: {input_filename}")
+    logger.info(f"output: {output_filename}")
 
     # close stream
     input_stream.close()
